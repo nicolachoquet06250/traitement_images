@@ -1,0 +1,12 @@
+{
+    "name": "nicolas/traitement_images",
+    "authors": [
+        {
+            "name": "nicolas.choquet",
+            "email": "nicolas.choquet@lagardere-active.com"
+        }
+    ],
+    "require": {
+        "ksubileau/color-thief-php": "v1.4.1"
+    }
+}
