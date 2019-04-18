@@ -16,13 +16,15 @@ $width = $image->getWidth();
 $height = $image->getHeight();
 
 echo 'images :';
-for($i = 0; $i <= $height; $i++) {
-	for($j = 0; $j <= $width; $j++) {
+echo '<div>';
+for($i = 0; $i < $height; $i++) {
+	for($j = 0; $j < $width; $j++) {
 		$px = $image->getPixelColor($j, $i);
 		echo '<div style="width: 1px; height: 1px; background-color: rgba('.$px->red.', '.$px->green.', '.$px->blue.', '.($px->alpha === 0 ? 1 : $px->alpha).'); display: inline-block;"></div>';
 	}
 	echo '<br>';
 }
+echo '</div>';
 
 echo '<br>';
 echo 'couleur dominante :';
