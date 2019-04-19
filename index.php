@@ -18,14 +18,8 @@ $dominantColor = ColorThief::getColor($sourceImage);
 $palette = ColorThief::getPalette($sourceImage);
 $image_to_pixels = ColorThief::getImageToPixels($sourceImage);
 
-echo '<div style="width: '.count($image_to_pixels[0]).'px;">';
-foreach ($image_to_pixels as $image_line) {
-	foreach ($image_line as $px) {
-		echo '<div style="display: inline-block; width: 1px; height: 1px; background-color: rgba('.$px->get_red().', '.$px->get_green().', '.$px->get_blue().', '.$px->get_alpha().')"></div>';
-	}
-	echo '<br>';
-}
-echo '</div>';
+echo 'Image :';
+echo ColorThief::getImageToHtmlPixels($sourceImage);
 
 echo '<br>';
 echo 'couleur dominante :';
