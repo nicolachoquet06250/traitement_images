@@ -92,6 +92,11 @@ class ColorThief extends \ColorThief\ColorThief {
 		return $_palette;
 	}
 
+	/**
+	 * @param string $source
+	 * @param int 	 $max_in_line
+	 * @return string
+	 */
 	public static function getPaletteToHtmlPixels($source, $max_in_line = 3) {
 		$palette = self::getPalette($source, 10, 10, null, $max_in_line);
 		$html = '<palette style="display: block; width: '.($max_in_line * self::$width_palette_px).'px">';
