@@ -23,19 +23,8 @@ echo ColorThief::getImageToHtmlPixels($sourceImage);
 
 echo '<br>';
 echo 'couleur dominante :';
-echo '<div style="width: 20px; height: 20px; background-color: rgb('.$dominantColor[0].', '.$dominantColor[1].', '.$dominantColor[2].')"></div>';
+echo '<div style="width: 20px; height: 20px; background-color: rgb('.$dominantColor->get_red().', '.$dominantColor->get_green().', '.$dominantColor->get_blue().')"></div>';
 echo '<br>';
 echo 'palette de couleur dominante :';
 echo '<br>';
-$max_in_line = 3;
-$cmp = 0;
-foreach ($palette as $color) {
-	echo '<div style="width: 20px; height: 20px; background-color: rgb('.$color[0].', '.$color[1].', '.$color[2].'); display: inline-block;"></div>';
-	if($cmp < $max_in_line-1) {
-		$cmp++;
-	}
-	else {
-		$cmp = 0;
-		echo '<br>';
-	}
-}
+echo ColorThief::getPaletteToHtmlPixels($sourceImage);
