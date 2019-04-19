@@ -1,26 +1,27 @@
 <?php
 
-require_once __DIR__.'/vendor/autoload.php';
+require_once __DIR__.'/autoload.php';
 
-use ColorThief\ColorThief;
-use ColorThief\Image\ImageLoader;
+use ColorThief\Extended\ColorThief;
 
-$sourceImage = 'https://i.ebayimg.com/images/g/k5cAAOSwNSxVeEJv/s-l300.jpg';
+function varDump(...$elems) {
+	echo '<pre>';
+	foreach ($elems as $elem) {
+		var_dump($elem);
+	}
+	echo '</pre>';
+}
+
+$sourceImage = 'https://o1.ldh.be/image/thumb/59b9261fcd703b65924f0e26.jpg';
 
 $dominantColor = ColorThief::getColor($sourceImage);
 $palette = ColorThief::getPalette($sourceImage);
+$image_to_pixels = ColorThief::getImageToPixels($sourceImage);
 
-$image = new ImageLoader();
-$image = $image->load($sourceImage);
-$width = $image->getWidth();
-$height = $image->getHeight();
-
-echo 'images :';
-echo '<div>';
-for($i = 0; $i < $height; $i++) {
-	for($j = 0; $j < $width; $j++) {
-		$px = $image->getPixelColor($j, $i);
-		echo '<div style="width: 1px; height: 1px; background-color: rgba('.$px->red.', '.$px->green.', '.$px->blue.', '.($px->alpha === 0 ? 1 : $px->alpha).'); display: inline-block;"></div>';
+echo '<div style="width: '.count($image_to_pixels[0]).'px;">';
+foreach ($image_to_pixels as $image_line) {
+	foreach ($image_line as $px) {
+		echo '<div style="display: inline-block; width: 1px; height: 1px; background-color: rgba('.$px->get_red().', '.$px->get_green().', '.$px->get_blue().', '.$px->get_alpha().')"></div>';
 	}
 	echo '<br>';
 }
